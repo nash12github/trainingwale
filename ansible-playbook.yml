@@ -51,8 +51,8 @@
 - name: "Play 3 Install Python packages and docker image push"
   hosts: docker-manager
   become: yes
-  #vars:
-    #ansible_python_interpreter: /usr/bin/python3
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Install boto3 and botocore with pip3 module
       pip:
