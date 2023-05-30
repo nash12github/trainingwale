@@ -27,9 +27,9 @@
   hosts: docker-manager
   become: yes
   tasks:
-    - name: Install Python 3.6
+    - name: Install Python 3
       yum:
-        name: python36
+        name: python3
         state: present
       register: out1
       tags:
@@ -40,7 +40,7 @@
     - name: alternatives
       alternatives:
         name: python
-        link: /usr/bin/python3.6
+        link: /usr/bin/python3
         path: /usr/bin/python3
       register: out2
       tags:
@@ -64,7 +64,7 @@
           #- docker-py
         - jsondiff
         - pyyaml
-       executable: pip3.6
+       executable: pip3
       register: out3
       tags: docker-lib-install
     - debug:
