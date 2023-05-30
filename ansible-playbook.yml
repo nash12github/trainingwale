@@ -37,16 +37,16 @@
     - debug:
         var: out1
 
-    - name: alternatives
-      alternatives:
-        name: python
-        link: /usr/bin/python3
-        path: /usr/bin/python3
-      register: out2
-      tags:
-        - python-alternatives
-    - debug:
-        var: out2
+    #- name: alternatives
+     # alternatives:
+      #  name: python
+       # link: /usr/bin/python3
+        #path: /usr/bin/python3
+      #register: out2
+      #tags:
+       # - python-alternatives
+    #- debug:
+     #   var: out2
 
 - name: "Play 3 Install Python packages and docker image push"
   hosts: docker-manager
