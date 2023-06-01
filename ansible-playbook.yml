@@ -84,7 +84,7 @@
       docker_image:
         state: absent
         force_absent: yes
-        name: registry/trainingwaleapp
+        name: 127.0.0.1:5000/trainingwaleapp
         tag: latest
       register: out4
       tags: docker-image-deletion
@@ -95,7 +95,7 @@
       docker_image:
         build:
           path: /tmp/training-com
-        name: registry/trainingwaleapp
+        name: 127.0.0.1:5000/trainingwaleapp
         tag: latest
         push: yes
         source: build
