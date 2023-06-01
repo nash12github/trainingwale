@@ -96,7 +96,7 @@
         build:
           path: /tmp/training-com
         name: 127.0.0.1:5000/trainingwaleapp
-        tag: latest
+        #tag: latest
         push: yes
         source: build
         #nocache: yes
