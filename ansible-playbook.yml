@@ -95,7 +95,7 @@
       docker_image:
         build:
           path: /tmp/training-com
-        name: 127.0.0.1:5000/trainingwaleapp
+        name: registry/trainingwaleapp
         tag: latest
         push: yes
         source: build
