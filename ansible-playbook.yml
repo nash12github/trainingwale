@@ -84,7 +84,7 @@
       docker_image:
         state: absent
         force_absent: yes
-        name: 127.0.0.1:5000/trainingwaleapp
+        name: registry/trainingwaleapp
         tag: latest
       register: out4
       tags: docker-image-deletion
