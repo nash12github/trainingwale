@@ -1,5 +1,5 @@
 ---
-- name: Play1 for copying files - Docker Project - 25/Nov/2022!!
+- name: Play1 for copying files
   hosts: docker-manager
   become: yes
   tasks:
@@ -27,9 +27,9 @@
   hosts: docker-manager
   become: yes
   tasks:
-    - name: Install Python 3
+    - name: Install Python 3.9
       yum:
-        name: python3
+        name: python39
         state: present
       register: out1
       tags:
@@ -37,16 +37,16 @@
     - debug:
         var: out1
 
-    #- name: alternatives
-     # alternatives:
-      #  name: python
-       # link: /usr/bin/python3
-        #path: /usr/bin/python3
-      #register: out2
-      #tags:
-       # - python-alternatives
-    #- debug:
-     #   var: out2
+    - name: alternatives
+      alternatives:
+        name: python
+        link: /usr/bin/python3.9
+        path: /usr/bin/python3
+      register: out2
+      tags:
+        - python-alternatives
+    - debug:
+        var: out2
 
 - name: "Play 3 Install Python packages and docker image push"
   hosts: docker-manager
@@ -64,7 +64,7 @@
           #- docker-py
         - jsondiff
         - pyyaml
-       executable: pip
+       executable: pip3.9
       register: out3
       tags: docker-lib-install
     - debug:
@@ -73,7 +73,7 @@
     - name: "Delete the docker image"
       docker_image:
         state: absent
-        force_absent: yes
+        force: yes
         name: 127.0.0.1:5000/trainingwaleapp
         tag: latest
       register: out4
@@ -88,15 +88,14 @@
         name: 127.0.0.1:5000/trainingwaleapp
         tag: latest
         push: yes
-        source: build
-        #nocache: yes
-        #force: yes
+        nocache: yes
+        force: yes
       register: out5
       tags: docker-image-build
     - debug:
         var: out5
 
-- name: "Play 4 docker stack deploy"
+- name: "Play 3 docker stack deploy"
   hosts: docker-manager
   become: yes
   tasks:
