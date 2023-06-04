@@ -99,8 +99,8 @@
         tag: latest
         push: yes
         source: build
-        nocache: yes
-        force: yes
+        build.nocache: yes
+        force_absent: yes
       register: out5
       tags: docker-image-build
     - debug:
